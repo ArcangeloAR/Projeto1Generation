@@ -31,68 +31,73 @@ public class DoacaoMain {
 		while(sair==false) {
 		
 			System.out.println("\n---------------------------------------"
-					+ "\nPor favor, digite uma das opÁıes abaixo: "
-					+ "\n\t1. Adicionar doaÁ„o recebida;"
-					+ "\n\t2. Repassar doaÁ„o;"
+					+ "\nPor favor, digite uma das op√ß√µes abaixo: "
+					+ "\n\t1. Adicionar doa√ß√£o recebida;"
+					+ "\n\t2. Repassar doa√ß√£o;"
 					+ "\n\t3. Visualizar Estoque;"
-					+ "\n\t4. Visualizar DoaÁıes Recebidas;"
-					+ "\n\t5. Visualizar DoaÁıes Repassadas;"
+					+ "\n\t4. Visualizar Doa√ß√µes Recebidas;"
+					+ "\n\t5. Visualizar Doa√ß√µes Repassadas;"
 					+ "\n\t6. Sair;");
 			
 			try {
 				opcao = read.nextInt();
 			}catch(Exception erro){
-				System.err.println("\nPor favor, execute o programa novamente e digite um n˙mero de acordo com a lista de opÁıes.");
+				System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
 			}
 			
 			while(opcao<1 || opcao>6) {
-				System.out.println("\nPor favor, digite uma opÁ„o v·lida: ");
+				System.out.println("\nPor favor, digite uma op√ß√£o v√°lida: ");
 				opcao = read.nextInt();
 			}
 			
 			switch(opcao) {
 			case 1:
 				read.nextLine();
-				System.out.println("\nPor favor, digite a quantidade de tipos de produtos que ser„o inclusos: ");
+				System.out.println("\nPor favor, digite a quantidade de tipos de produtos que ser√£o inclusos: ");
 				qntdTiposProdutos = read.nextInt(); 
-				System.out.println("\nAgora, insira o nome do doador: ");
+				try {
+					qntdTiposProdutos = read.nextInt()
+				}catch(Exception erro){
+					System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+				}
 				read.nextLine();
+				System.out.println("\nAgora, insira o nome do doador: ");
 				nomeDoador = read.nextLine();
 				System.out.println("\nDoador atual: " + nomeDoador);
 				Doacao dp = new Doacao(nomeDoador, id++); 
 			
 				for(int i=0;i<qntdTiposProdutos;i++) {
-					System.out.println("\nPor favor, digite o cÛdigo da classificaÁ„o do "+(i+1)+"∫ tipo de produto da doaÁ„o "+dp.getId()+"-"+(i+1)+": ");
-					System.out.println("\n\t1. Produto PerecÌvel;"
-							+ "\n\t2. Produto N„o PerecÌvel;"); //menu classificacao dos tipos produtos
+					System.out.println("\nPor favor, digite o c√≥digo da classifica√ß√£o do "+(i+1)+"¬∫ tipo de produto da doa√ß√£o "+dp.getId()+"-"+(i+1)+": ");
+					System.out.println("\n\t1. Produto Perec√≠vel;"
+							+ "\n\t2. Produto N√£o Perec√≠vel;"); //menu classificacao dos tipos produtos
 					
 					try {
 						opcaoDoacao = read.nextInt();
 					}catch(Exception erro){
-						System.err.println("\nPor favor, execute o programa novamente e digite um n˙mero de acordo com a lista de opÁıes.");
+						System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
 					}	
 					
 					while(opcaoDoacao<1 || opcaoDoacao>2) {
-						System.out.println("\nPor favor, digite uma opÁ„o valida: ");
+						System.out.println("\nPor favor, digite uma op√ß√£o valida: ");
 						opcaoDoacao = read.nextInt();
 					}
 					
 					switch(opcaoDoacao) {
 					case 1:
-						System.out.println("Por favor, digite o cÛdigo do "+(i+1)+"∫ tipo de produto da doaÁ„o "+dp.getId()+"-"+(i+1)+": ");
-						System.out.println("\n\t1. Produtos FarmacÍuticos;"
-								+ "\n\t2. Gr„os;"
+						System.out.println("Por favor, digite o c√≥digo do "+(i+1)+"¬∫ tipo de produto da doa√ß√£o "+dp.getId()+"-"+(i+1)+": ");
+						System.out.println("\n\t1. Produtos Farmac√™uticos;"
+								+ "\n\t2. Gr√£os;"
 								+ "\n\t3. Frutas;"
 								+ "\n\t4. Carnes;"
 								+ "\n\t5. Outros;");
 						try {
 							opcaoDoacaoPerecivel = read.nextInt();
 						}catch(Exception erro){
-							System.err.println("\nPor favor, execute o programa novamente e digite um n˙mero de acordo com a lista de opÁıes.");
+							System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
 						}
 						
 						while(opcaoDoacao<1 || opcaoDoacao>5) {
-							System.out.println("\nPor favor, digite uma opÁ„o v·lida: "); 
+							System.out.println("\nPor favor, digite uma op√ß√£o v√°lida: "); 
 							opcaoDoacaoPerecivel = read.nextInt();
 						}
 						
@@ -100,11 +105,15 @@ public class DoacaoMain {
 						
 						case 1:
 							read.nextLine();
-							tipo = "\nProdutos FarmacÍuticos"; 
-							System.out.println("\nInforme a quantidade de produtos perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantidadePereciveis = read.nextInt();
+							tipo = "\nProdutos Farmac√™uticos"; 
+							System.out.println("\nInforme a quantidade de produtos perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantidadePereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto perec√≠vel: ");
 							nomeProduto = read.nextLine(); 
 							read.nextLine();
 							System.out.println("\nInsira a data de vencimento desse produto: ");
@@ -115,11 +124,15 @@ public class DoacaoMain {
 						
 						case 2:
 							read.nextLine();
-							tipo = "Gr„os";
-							System.out.println("\nInforme a quantidade de produtos perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantidadePereciveis = read.nextInt();
+							tipo = "Gr√£os";
+							System.out.println("\nInforme a quantidade de produtos perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantidadePereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							read.nextLine();
 							System.out.println("\nInsira a data de vencimento desse produto: ");
@@ -131,10 +144,14 @@ public class DoacaoMain {
 						case 3:
 							read.nextLine();
 							tipo = "Frutas";
-							System.out.println("\nInforme a quantidade de produtos perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantidadePereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantidadePereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							read.nextLine();
 							System.out.println("\nInsira a data de vencimento desse produto: ");
@@ -146,10 +163,14 @@ public class DoacaoMain {
 						case 4:
 							read.nextLine();
 							tipo = "Carnes";
-							System.out.println("\nInforme a quantidade de produtos perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantidadePereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantidadePereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							read.nextLine();
 							System.out.println("\nInsira a data de vencimento desse produto: ");
@@ -161,10 +182,14 @@ public class DoacaoMain {
 						case 5:
 							read.nextLine();
 							tipo = "Outros";
-							System.out.println("\nInforme a quantidade de produtos perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantidadePereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantidadePereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							read.nextLine();
 							System.out.println("\nInsira a data de vencimento desse produto: ");
@@ -179,7 +204,7 @@ public class DoacaoMain {
 					
 					case 2:
 						read.nextLine();
-						System.out.println("\nPor favor, digite o cÛdigo do "+(i+1)+" tipo de produto da doaÁ„o "+dp.getId()+"-"+(i+1)+": ");
+						System.out.println("\nPor favor, digite o c√≥digo do "+(i+1)+" tipo de produto da doa√ß√£o "+dp.getId()+"-"+(i+1)+": ");
 						System.out.println("\n\t1. Produto de Higiene;"
 								+ "\n\t2. Produto Enlatado;"
 								+ "\n\t3. Roupas;"
@@ -188,11 +213,11 @@ public class DoacaoMain {
 						try {
 							opcaoDoacaoNaoPerecivel = read.nextInt();
 						}catch(Exception erro){
-							System.err.println("\nPor favor, execute o programa novamente e digite um n˙mero de acordo com a lista de opÁıes.");
+							System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
 						}
 						
 						while(opcaoDoacao<1 || opcaoDoacao>5) {
-							System.out.println("\nPor favor, digite uma opÁ„o v·lida: ");
+							System.out.println("\nPor favor, digite uma op√ß√£o v√°lida: ");
 							opcaoDoacaoNaoPerecivel = read.nextInt();
 						}
 						
@@ -201,10 +226,14 @@ public class DoacaoMain {
 						case 1:
 							read.nextLine();
 							tipo = "Produto de Higiene";
-							System.out.println("\nInforme a quantidade de produtos n„o perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantNaoPereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos n√£o perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantNaoPereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto n„o perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto n√£o perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							ProdutoNaoPerecivel  pnp = new ProdutoNaoPerecivel(nomeProduto, quantNaoPereciveis, tipo);
 							dp.insereProdutoNaoPerecivel(pnp);
@@ -215,10 +244,14 @@ public class DoacaoMain {
 						case 2:
 							read.nextLine();
 							tipo = "Produto Enlatado";
-							System.out.println("\nInforme a quantidade de produtos n„o perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantNaoPereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos n√£o perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantNaoPereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto n„o perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto n√£o perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							ProdutoNaoPerecivel  pnp1 = new ProdutoNaoPerecivel(nomeProduto, quantNaoPereciveis, tipo);
 							dp.insereProdutoNaoPerecivel(pnp1);
@@ -229,10 +262,14 @@ public class DoacaoMain {
 						case 3:
 							read.nextLine();
 							tipo = "Roupas";
-							System.out.println("\nInforme a quantidade de produtos n„o perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantNaoPereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos n√£o perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantNaoPereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto n„o perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto n√£o perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							ProdutoNaoPerecivel  pnp2 = new ProdutoNaoPerecivel(nomeProduto, quantNaoPereciveis, tipo);
 							dp.insereProdutoNaoPerecivel(pnp2);
@@ -242,10 +279,14 @@ public class DoacaoMain {
 						case 4:
 							read.nextLine();
 							tipo = "Uniforme";
-							System.out.println("\nInforme a quantidade de produtos n„o perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantNaoPereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos n√£o perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantNaoPereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto n„o perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto n√£o perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							ProdutoNaoPerecivel  pnp3 = new ProdutoNaoPerecivel(nomeProduto, quantNaoPereciveis, tipo);
 							dp.insereProdutoNaoPerecivel(pnp3);
@@ -255,10 +296,14 @@ public class DoacaoMain {
 						case 5:
 							read.nextLine();
 							tipo = "Outros";
-							System.out.println("\nInforme a quantidade de produtos n„o perecÌveis de um mesmo tipo que ser„o inseridos: ");
-							quantNaoPereciveis = read.nextInt();
+							System.out.println("\nInforme a quantidade de produtos n√£o perec√≠veis de um mesmo tipo que ser√£o inseridos: ");
+							try {
+								quantNaoPereciveis = read.nextInt();
+							}catch(Exception erro){
+								System.err.println("\nPor favor, execute o programa novamente e digite um n√∫mero de acordo com a lista de op√ß√µes.");
+							}
 							read.nextLine();
-							System.out.println("\nInsira o nome desse produto n„o perecÌvel: ");
+							System.out.println("\nInsira o nome desse produto n√£o perec√≠vel: ");
 							nomeProduto = read.nextLine();
 							ProdutoNaoPerecivel  pnp4 = new ProdutoNaoPerecivel(nomeProduto, quantNaoPereciveis, tipo);
 							dp.insereProdutoNaoPerecivel(pnp4);
@@ -273,37 +318,37 @@ public class DoacaoMain {
 				}
 				doacoes.add(dp);
 					
-				System.out.printf("\nObrigado por adicionar a doaÁ„o %d ",dp.getId());
+				System.out.printf("\nObrigado por adicionar a doa√ß√£o %d ",dp.getId());
 			break;
 	
 			case 2:
 				if(quantDoacoes < doacoes.size()){
 					read.nextLine();
 					Doacao d = doacoes.get(quantDoacoes++);
-					System.out.printf("\nN˙mero do pedido: %d",d.getId());
+					System.out.printf("\nN√∫mero do pedido: %d",d.getId());
 					System.out.println("\nDoador: " + d.getNomeDoador());
-					System.out.println("\nInforme a ONG para qual vocÍ est· repassando a doaÁ„o: ");
+					System.out.println("\nInforme a ONG para qual voc√™ est√° repassando a doa√ß√£o: ");
 					entidade = read.nextLine();
 					read.nextLine();
-					System.out.println("\nProdutos doados na categoria de 'perecÌveis': ");
+					System.out.println("\nProdutos doados na categoria de 'perec√≠veis': ");
 					d.imprimirArrayPereciveis();
 					read.nextLine();
-					System.out.println("\nProdutos doados na categoria de 'n„o perecÌveis': ");
+					System.out.println("\nProdutos doados na categoria de 'n√£o perec√≠veis': ");
 					d.imprimirArrayNaoPereciveis();
 					read.nextLine();
 					repasses.add(new Repasse(entidade, d));
 				} 
 				else {
-					System.out.printf("Infelizmente n„o h· doaÁıes disponÌveis...");
+					System.out.printf("Infelizmente n√£o h√° doa√ß√µes dispon√≠veis...");
 				}
-				// Repassar doaÁ„o;
+				// Repassar doa√ß√£o;
 			break;
 			
 			case 3:
 				read.nextLine();
 				System.out.println("\nEstoque de Produtos: ");
 				read.nextLine();
-				System.out.println("\nProdutos perecÌveis:");
+				System.out.println("\nProdutos perec√≠veis:");
 				for(Doacao d: doacoes){
 					for(ProdutoPerecivel p: d.getProdutosPereciveis()){
 						System.out.println("\nTipo: " + p.getTipo() + " | " + p.getNome() + " | Vencimento: " + p.getDataVencimento());
@@ -311,7 +356,7 @@ public class DoacaoMain {
 				}
 				System.out.println("\n----------------------------------");
 
-				System.out.println("\nProdutos n„o perecÌveis:");
+				System.out.println("\nProdutos n√£o perec√≠veis:");
 				for(Doacao d: doacoes){
 					for(ProdutoNaoPerecivel p: d.getProdutosNaoPereciveis()){
 						System.out.println("\nTipo: " + p.getTipo() + " | " + p.getNome());
@@ -324,35 +369,35 @@ public class DoacaoMain {
 			break;
 			
 			case 4:
-				// Visualizar DoaÁıes Recebidas;
+				// Visualizar Doa√ß√µes Recebidas;
 				read.nextLine();
 				for(Doacao d: doacoes){
 					System.out.println("\nDoador: " + d.getNomeDoador());
 					System.out.println("\nId: " + d.getId());
-					System.out.println("\nProdutos perecÌveis: ");
+					System.out.println("\nProdutos perec√≠veis: ");
 					d.imprimirArrayPereciveis();
-					System.out.println("\nProdutos n„o perecÌveis: ");
+					System.out.println("\nProdutos n√£o perec√≠veis: ");
 					d.imprimirArrayNaoPereciveis();
 					System.out.println("\n----------------------------------");
 				}
 			break;
 			
 			case 5:
-				// Visualizar DoaÁıes Repassadas;
+				// Visualizar Doa√ß√µes Repassadas;
 				read.nextLine();
 				for(Repasse r: repasses){
-					System.out.println("\nId da doaÁ„o: " + r.getDoacao().getId());
-					System.out.println("\nEntidade benefici·ria: " + r.getEntidade());
-					System.out.println("\nProdutos perecÌveis: ");
+					System.out.println("\nId da doa√ß√£o: " + r.getDoacao().getId());
+					System.out.println("\nEntidade benefici√°ria: " + r.getEntidade());
+					System.out.println("\nProdutos perec√≠veis: ");
 					r.getDoacao().imprimirArrayPereciveis();
-					System.out.println("\nProdutos n„o perecÌveis: ");
+					System.out.println("\nProdutos n√£o perec√≠veis: ");
 					r.getDoacao().imprimirArrayNaoPereciveis();
 				}
 
 			break;
 			
 			case 6:
-				System.out.println("\n\t\tObrigado por utilizar nosso programa de repasse de doaÁıes!");
+				System.out.println("\n\t\tObrigado por utilizar nosso programa de repasse de doa√ß√µes!");
 				sair=true;
 			break;
 			
