@@ -1,4 +1,4 @@
-package pacote;
+package pacoteJava;
 
 public class ProdutoPerecivel extends DoacaoProduto{
 	
