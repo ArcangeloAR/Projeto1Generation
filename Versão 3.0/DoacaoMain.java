@@ -14,6 +14,7 @@ public class DoacaoMain {
 		int quantidadePereciveis;
 		int id=0;
 		int quantNaoPereciveis;
+		int quantDoacoes = 0;
 		boolean sair = false;
 		String tipo;
 		String nomeDoador;
@@ -41,7 +42,7 @@ public class DoacaoMain {
 				System.out.println("Agora, insira o nome do doador: ");
 				nomeDoador = read.nextLine();
 				Doacao dp = new Doacao(nomeDoador, id++); 
-				doacoes.add(dp);
+				
 				
 					for(int i=0;i<qntdTiposProdutos;i++) {
 						System.out.println("Por favor, digite o código da classificação do "+(i+1)+"º tipo de produto da doação "+dp.getId()+"-"+(i+1)+": ");
@@ -205,22 +206,30 @@ public class DoacaoMain {
 							
 						break;
 						}
-	
-					}
+						
+					} doacoes.add(dp);
+					
 				System.out.printf("Obrigado por adicionar a doação %d",dp.getId());
 				
 			break;
 	
 			case 2:
-				System.out.printf("Número do pedido: 000%d",dp.getId());
-				System.out.println("Doador: "+dp.getNome());
-				System.out.println("Informe a ONG para qual você está repassando a doação: ");
-				entidade = read.next();
-				System.out.println("Produtos doados na categoria de 'Perecíveis': ");
-				dp.imprimirArray(dp.getProdutosPereciveis());
-				System.out.println("Produtos doados na categoria de 'Não Perecíveis': ");
-				dp.imprimirArray(dp.getProdutosNaoPereciveis());
-				read.nextLine();
+				if(quantDoacoes < doacoes.size());{
+					Doacao d = doacoes.get(quantDoacoes++);
+					System.out.printf("Número do pedido: 000%d",d.getId());
+					System.out.println("Doador: "+ d.getNomeDoador());
+					System.out.println("Informe a ONG para qual você está repassando a doação: ");
+					entidade = read.next();
+					System.out.println("Produtos doados na categoria de 'Perecíveis': ");
+					d.imprimirArrayPereciveis();
+					System.out.println("Produtos doados na categoria de 'Não Perecíveis': ");
+					d.imprimirArrayNaoPereciveis();
+					read.nextLine();
+				} else {
+					System.out.printf("Infelizmente não há doações disponíveis...");
+				}
+				
+				
 				
 				// Repassar doaÃ§Ã£o;
 			break;
@@ -248,6 +257,5 @@ public class DoacaoMain {
 			}
 		}
 	}
-
 
 }
